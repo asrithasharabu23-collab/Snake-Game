@@ -1,0 +1,155 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY WITH ANIMATED + PARTICLE-LIKE EFFECT */
+body {
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+
+    /* Multi-layer gradient */
+    background: radial-gradient(circle at 20% 30%, #1a2a6c, transparent),
+                radial-gradient(circle at 80% 70%, #b21f1f, transparent),
+                radial-gradient(circle at 50% 50%, #0f2027, #000);
+
+    animation: moveBg 15s infinite alternate ease-in-out;
+}
+
+/* Background animation */
+@keyframes moveBg {
+    0% {
+        background-position: 0% 0%, 100% 100%, center;
+    }
+    100% {
+        background-position: 20% 30%, 80% 70%, center;
+    }
+}
+
+/* NEON GRID OVERLAY */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image:
+        linear-gradient(rgba(0,255,204,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,204,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: rotate(10deg);
+    animation: gridMove 10s linear infinite;
+    z-index: 0;
+}
+
+/* Grid movement */
+@keyframes gridMove {
+    0% { transform: translateY(0) rotate(10deg); }
+    100% { transform: translateY(-50px) rotate(10deg); }
+}
+
+/* MAIN CONTENT */
+h1 {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    z-index: 2;
+    position: relative;
+}
+
+/* GLASS CARD EFFECT FOR CANVAS */
+canvas {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+
+    /* Glass effect */
+    backdrop-filter: blur(10px);
+
+    /* Neon border */
+    border: 2px solid rgba(0, 255, 204, 0.6);
+
+    /* Glow */
+    box-shadow:
+        0 0 10px #00ffcc,
+        0 0 30px rgba(0,255,204,0.5),
+        inset 0 0 10px rgba(0,255,204,0.3);
+
+    position: relative;
+    z-index: 2;
+}
+
+/* SCORE TEXT */
+#score {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* BUTTON STYLE */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    /* Gradient button */
+    background: linear-gradient(45deg, #00ffcc, #00ccff);
+    color: black;
+    font-weight: bold;
+
+    /* Glow */
+    box-shadow: 0 0 10px #00ffcc;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ccff;
+}
+
+/* LEADERBOARD */
+h3 {
+    margin-top: 20px;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+ul {
+    list-style: none;
+    margin-top: 10px;
+    z-index: 2;
+    position: relative;
+}
+
+li {
+    padding: 5px;
+    font-size: 1.1rem;
+
+    /* subtle glow */
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+/* FLOATING LIGHT EFFECT */
+body::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0,255,204,0.3), transparent);
+    top: 20%;
+    left: 30%;
+    animation: floatLight 6s infinite alternate ease-in-out;
+    z-index: 1;
+}
+
+@keyframes floatLight {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(50px); }
+}
